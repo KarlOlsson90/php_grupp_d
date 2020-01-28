@@ -2,10 +2,10 @@
 
 class Database
 {
-    public static $host = '127.0.0.1';
-    public static $dbName = 'loginsystem';
-    public static $username = 'root';
-    public static $password = 'gunnahr';
+    public static $host = 'remotemysql.com';
+    public static $dbName = 'BLojzvsxpf'; 
+    public static $username = 'BLojzvsxpf'; 
+    public static $password = 'TQEfQZrHiF';
 
     private static function connect()
     {
