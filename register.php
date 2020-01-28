@@ -62,6 +62,6 @@ if (Input::exists()) {
             echo "<h6 class = 'text-danger'>{$message}</h6>";
         }
         ?>
-        <button class="btn bg-dark text-white my-2 btn-lg" name = "register-submit" type="submit">Sign up</but>
+        <button class="btn bg-dark text-white my-2 btn-lg" name = "register-submit" type="submit">Sign up</button>
     </form>
 </div>
