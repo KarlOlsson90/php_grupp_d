@@ -1,33 +1,32 @@
 <?php
-require "header.php";
+    include_once './includes/autoloader.php';
 ?>
 
-    <main>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login - Group exercise </title>
+</head>
+<body>
+    <?php include './includes/header.php'; ?>
+    <div class = "container mt-5 bg-light rounded p-5">
     <?php
-        if (isset($_SESSION["userId"])) {
-            echo "<p>Välkommen till sidan!</p>";
+        $user = new User();
+        if ($user->isLoggedIn()) {
+            echo '<h3 class = "login">You are logged in</h3>';
+        } else {
+            echo '<h3 class = "logout">You are logged out</h3>';
         }
-    ?>  
-    <?php
-    if (isset($_SESSION['userId'])) {
-        echo "<form action='includes/logout_code.php' method='post'>
-        <button type='submit' name='logoutSubmit'>Logga ut</button>
-        </form>";
-    } else {
-        echo "<h1>Logga in:</h1>
-        <form action='includes/login_code.php' method='post'>
-            <input type='text' name='userMail' placeholder='Mailadress'>
-            <input type='password' name='userPassword' placeholder='Lösenord'>
-            <button type='submit' name='loginSubmit'>Logga in</button>
-            </form>
-            <a href='register.php'>Registrera ny användare</a>";
-    }
-?>
+        if (Session::exists('success')) {
+            $message = Session::flashMessage('success');
+            echo "<h6 class = 'text-success'>{$message}</h6>";
+        }
+    ?>
+    </div>
 
-
-    </main>
-
-<?php
-require "footer.php";
-?>
+  </body>
+</body>
+</html>
