@@ -2,6 +2,7 @@
 
 namespace Session;
 
+// Handles user sessions for logged in users.
 class Session
 {
     public static function exists($name)
