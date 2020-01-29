@@ -3,13 +3,8 @@
         "phpunit/phpunit": "8"
     },
     "autoload": {
-        "psr-4": {
-            "Db\\": "app/",
-            "User\\": "app/",
-            "Input\\": "app/",
-            "Session\\": "app/",
-            "Token\\": "app/",
-            "Validate\\": "app/"
-        }
+        "classmap": [
+            "app/classes"
+        ]
     }
 }

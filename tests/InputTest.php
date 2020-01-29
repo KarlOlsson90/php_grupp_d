@@ -1,6 +1,5 @@
 <?php
 
-namespace Testing;
 
 use PHPUnit\Framework\TestCase;
 use Input\Input;

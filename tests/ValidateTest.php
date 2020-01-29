@@ -1,6 +1,5 @@
 <?php
 
-namespace Testing;
 
 use PHPUnit\Framework\TestCase;
 use Validate\Validate;
@@ -9,17 +8,21 @@ class ValidateTest extends TestCase
 {
     protected $Validate;
 
-    public function setUp()
+   /*  public function setUp()
     {
         $this->Validate = new Validate();
         $_POST['username'] = 'Alexander';
         $_POST['password'] = '123';
-    }
+    } */
 
     // Validate that all login fields have entered input.
     public function testCheckIfAllLoginFieldsHaveInput()
     {
-        $this->Validate->check($_POST, array(
+        $validate = new Validate();
+        $_POST['username'] = 'Alexander';
+        $_POST['password'] = '123';
+
+        $validate->check($_POST, array(
             'username' => array(
                 'required' => true,
             ),
@@ -28,13 +31,17 @@ class ValidateTest extends TestCase
             ),
         ));
 
-        $this->assertTrue($this->Validate->passed());
-    }
+        $this->assertTrue($validate->passed());
+    } 
 
     /* Validate that username in register form is unique against our DB */
     public function testCheckIfAllRegisterFieldsHaveInputAndError()
     {
-        $this->Validate->check($_POST, array(
+        $validate = new Validate();
+        $_POST['username'] = 'Alexander';
+        $_POST['password'] = '123';
+
+        $validate->check($_POST, array(
             'username' => array(
                 'required' => true,
                 'unique' => 'users',
@@ -52,6 +59,6 @@ class ValidateTest extends TestCase
             ),
         ));
 
-        $this->assertEquals('Username is already taken', $this->Validate->error());
+        $this->assertEquals('Username is already taken', $validate->error());
     }
 }

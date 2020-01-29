@@ -1,35 +1,37 @@
 <?php
 
-namespace Testing;
 
 use PHPUnit\Framework\TestCase;
 use User\User;
 
 class UserTest extends TestCase
 {
-    protected $User;
+     protected $User;
 
     // Setting up a User object, that we can use in every test.
-    public function setUp()
+ /*    public function setUp()
     {
-        $this->User = new User();
-    }
+        $user = new User();
+    } */
 
     // Check if we have any existing user with the name Alexander in our database.
     public function testFindExistingUserInDatabase()
     {
-        $this->assertTrue($this->User->find('Alexander'));
+        $user = new User();
+        $this->assertTrue($user->find('Alexander'));
     }
 
     // Trying to login with right credentials from our database.
     public function testLoginWithRightCredentials()
     {
-        $this->assertTrue($this->User->login('Alexander', 'Alexander'));
+        $user = new User();
+        $this->assertTrue($user->login('Alexander', 'Alexander'));
     }
 
     // Trying to login with wrong credentials from our database.
     public function testLoginWithWrongCredentials()
     {
-        $this->assertFalse($this->User->login('LOREM IPSUM', 'LOREM IPSUM'));
-    }
+        $user = new User();
+        $this->assertFalse($user->login('LOREM IPSUM', 'LOREM IPSUM'));
+    } 
 }

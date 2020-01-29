@@ -1,6 +1,5 @@
 <?php
 
-namespace Testing;
 
 use PHPUnit\Framework\TestCase;
 use Session\Session;
