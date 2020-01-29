@@ -1,5 +1,6 @@
 <?php
 
+namespace Testing;
 
 use PHPUnit\Framework\TestCase;
 use Validate\Validate;
@@ -7,13 +8,6 @@ use Validate\Validate;
 class ValidateTest extends TestCase
 {
     protected $Validate;
-
-   /*  public function setUp()
-    {
-        $this->Validate = new Validate();
-        $_POST['username'] = 'Alexander';
-        $_POST['password'] = '123';
-    } */
 
     // Validate that all login fields have entered input.
     public function testCheckIfAllLoginFieldsHaveInput()
@@ -32,7 +26,7 @@ class ValidateTest extends TestCase
         ));
 
         $this->assertTrue($validate->passed());
-    } 
+    }
 
     /* Validate that username in register form is unique against our DB */
     public function testCheckIfAllRegisterFieldsHaveInputAndError()

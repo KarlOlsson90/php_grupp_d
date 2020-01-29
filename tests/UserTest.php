@@ -1,5 +1,6 @@
 <?php
 
+namespace Testing;
 
 use PHPUnit\Framework\TestCase;
 use User\User;
@@ -7,12 +8,6 @@ use User\User;
 class UserTest extends TestCase
 {
      protected $User;
-
-    // Setting up a User object, that we can use in every test.
- /*    public function setUp()
-    {
-        $user = new User();
-    } */
 
     // Check if we have any existing user with the name Alexander in our database.
     public function testFindExistingUserInDatabase()
