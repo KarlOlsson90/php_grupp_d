@@ -2,7 +2,6 @@
     include_once './includes/autoloader.php';
     spl_autoload_register('myAutoLoader');
 
-    use User\User;
     use Session\Session;
 ?>
 
@@ -18,9 +17,9 @@
     <?php include './includes/header.php'; ?>
     <div class = "container mt-5 bg-light rounded p-5">
     <?php
-    $user = new User();
     if ($user->isLoggedIn()) {
-        echo '<h3 class = "login">You are logged in</h3>';
+        echo '<h3 class = "login">Hi ' . Session::get('user') . '! You are logged in</h3>';
+        echo '<h3 class = "login">Your mail adress is: ' . Session::get('email') . '</h3>';
     } else {
         echo '<h3 class = "logout">You are logged out</h3>';
     }

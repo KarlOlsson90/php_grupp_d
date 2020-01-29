@@ -6,7 +6,6 @@ spl_autoload_register('myAutoLoader');
 use Input\Input;
 use Token\Token;
 use Validate\Validate;
-use User\User;
 use Session\Session;
 
 if (Input::exists()) {
@@ -31,7 +30,6 @@ if (Input::exists()) {
         ));
         
         if ($validate->passed()) {
-            $user = new User();
             $user->create(array(
                 Input::get('username'),
                 Input::get('email'),

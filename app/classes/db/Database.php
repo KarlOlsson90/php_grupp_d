@@ -4,10 +4,10 @@ namespace Db;
 
 class Database
 {
-    public static $host = 'remotemysql.com';
-    public static $dbName = 'BLojzvsxpf';
-    public static $username = 'BLojzvsxpf';
-    public static $password = 'TQEfQZrHiF';
+    private static $host = 'remotemysql.com';
+    private static $dbName = 'BLojzvsxpf';
+    private static $username = 'BLojzvsxpf';
+    private static $password = 'TQEfQZrHiF';
 
     private static function connect()
     {
@@ -22,7 +22,7 @@ class Database
         }
     }
 
-    public static function query($query, $params = array())
+    protected static function query($query, $params = array())
     {
         $stmt = self::connect()->prepare($query);
         $stmt->execute($params);

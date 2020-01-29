@@ -12,17 +12,13 @@ class User extends Database
 
     public function __construct($user = null)
     {
-        if (!$user) {
-            if (Session::exists('user')) {
-                $user = Session::get('user');
-                if ($this->find($user)) {
-                    $this->isLoggedIn = true;
-                } else {
-                    //logout
-                }
+        if (Session::exists('user')) {
+            $user = Session::get('user');
+            if ($this->find($user)) {
+                $this->isLoggedIn = true;
+            } else {
+                //logout
             }
-        } else {
-            $this->find($user);
         }
     }
 
@@ -49,6 +45,7 @@ class User extends Database
         if ($user) {
             if (password_verify($password, $this->user_info[0]["userPassword"])) {
                 Session::put('user', $this->user_info[0]["username"]);
+                Session::put('email', $this->user_info[0]["userEmail"]);
                 return true;
             } else {
                 Session::flashMessage('error', 'Wrong password');
