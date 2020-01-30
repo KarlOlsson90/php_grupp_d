@@ -9,7 +9,7 @@ class Validate extends Database
     private $passed;
     private $error;
 
-    public function check($method, $items = array()) // Primary validation function.
+    public function check($method, $items = array()) // Primary validation function with the values in an array. $Method represents request type.
     {
         foreach ($items as $item => $rules) { // Loops through all items rules.
             foreach ($rules as $rule => $rule_value) { // loops through all rules associated with each item.
@@ -24,7 +24,7 @@ class Validate extends Database
                             return;
                         }
                     } elseif ($rule === 'matches') { // Check if input has the rule "matches" (password).
-                        if ($input_value != $method[$rule_value]) { // Check if password is not equal to its other instance.
+                        if ($input_value != $method[$rule_value]) { // Check if password is not equal to its other instance (rule value is the other password)
                             $this->setError("Passwords don't match"); // Error if passwords doesnt match.
                             return;
                         }
@@ -39,7 +39,7 @@ class Validate extends Database
             }
         }
         if (!isset($this->error)) { // Check if no errors occured
-            $this->passed = true; // Set passed variable to true if no error occured in above block. Used in other classes for session (?)
+            $this->passed = true; // Set passed variable to true if no error occured in above block.
         }
     }
 

@@ -12,7 +12,7 @@ class User extends Database
 
     public function __construct($user = null) // constructor for user class
     {
-        if (Session::exists('user')) { // Checks if a session with the name "user" exists
+        if (Session::exists('user')) { // Checks if a session with the key "user" has a set username
             $user = Session::get('user'); // Gets values from the session and saves them in variable
             if ($this->find($user)) { // Sends above values into find function
                 $this->isLoggedIn = true; //sets "isLoggedIn" to true if above function returns true
@@ -22,7 +22,7 @@ class User extends Database
         }
     }
 
-    public function create($values = array()) // NOT USED
+    public function create($values = array())
     {
         self::query("INSERT INTO users (username, userEmail, userPassword)  VALUES (?,?,?)", $values); //Inserts new user into database
     }
