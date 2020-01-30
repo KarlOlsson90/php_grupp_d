@@ -9,17 +9,17 @@ use Validate\Validate;
 use Session\Session;
 
 if (Input::exists()) {
-    if (Token::check(Input::get("token"))) {
+    if (Token::check(Input::get('token'))) {
         $validate = new Validate();
         $validate->check($_POST, array(
-            "username" => array(
-                'required' => true
+            'username' => array(
+                'required' => true,
             ),
             'password' => array(
-                'required' => true
-            )
+                'required' => true,
+            ),
         ));
-        
+
         if ($validate->passed()) {
             $login = $user->login(
                 Input::get('username'),
@@ -38,7 +38,7 @@ if (Input::exists()) {
 <div class="container mt-5 bg-light rounded p-5">
     <form action = "login.php" class="d-flex flex-column my-2 my-lg-0 pl-5 pr-5" method = "POST">
         <h1 class="register-title">Sign In</h1>
-        <input class="form-control mr-sm-2 my-2" type="text" name = "username" placeholder="Username">
+        <input class="form-control mr-sm-2 my-2" type="text" name = "username" placeholder="Username" value = "<?php echo Input::get('username'); ?>">
         <input class="form-control mr-sm-2 my-2" type="password" name = "password" placeholder="Password">
         <input type = "hidden" name = "token" value = "<?php echo Token::generate(); ?>">
         <?php

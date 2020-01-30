@@ -1,11 +1,11 @@
 <?php
     session_start();
-    include_once './includes/autoloader.php';
+    include_once 'autoloader.php';
     spl_autoload_register('myAutoLoader');
 
     use User\User;
 
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,20 +29,20 @@
         <?php
         $user = new User();
         if ($user->isLoggedIn()) {
-               echo(
+            echo
                 '<form action = "logout.php" class="logout-form form-inline my-2 my-lg-0" method = "post">
                     <button class="btn btn-outline-dark my-2 my-sm-0" name="logout-submit" type="submit">Logout</button>
                 </form>'
-            );
+            ;
         } else {
-               echo(
+            echo
                 '<form class="form-inline my-2 my-lg-0">
                 <div class "container d-flex">
                     <a href = "login.php" class="btn btn-outline-dark my-2 my-sm-0" >Login</a>
                     <a href = "register.php" class="btn btn-outline-dark my-2 ml-2 my-sm-0" >Register</a>
                 </div>
                 </form>'
-            );
+            ;
         }
         ?>
         </div>
